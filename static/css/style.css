@@ -27,6 +27,14 @@
   margin-top: 10px;
 }
 
+.h-search {
+  height: 300px;
+}
+
+.h-answer {
+  height: 500px;
+}
+
 /*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
