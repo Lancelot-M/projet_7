@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
-from GrandPyBot.test import Wiki_api
-#import sys
+from GrandPyBot.system import System
+import sys, json
 
 app = Flask(__name__)
 
@@ -8,13 +8,11 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/test/', methods=['GET', 'POST'])
-def wiki_test():
+@app.route('/ask/', methods=['GET', 'POST'])
+def launch():
 	if request.method == 'POST':
-		question = request.form['question']
-		#print(question, file=sys.stderr)
-		answer = Wiki_api.load_page(question)
-		data = [question, answer]
+		data = request.form['question']
+		data = System.questionning(data)
 		return jsonify(data)
 	else:
 		return "Oups il y a un bug dans la matrice."
