@@ -8,12 +8,12 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/ask/', methods=['GET', 'POST'])
+@app.route('/ask/', methods=['POST'])
 def launch():
 	if request.method == 'POST':
 		data = request.form['question']
-		data = System.questionning(data)
-		return jsonify(data)
+		dict_sys = System.questionning(data)
+		return dict_sys
 	else:
 		return "Oups il y a un bug dans la matrice."
 

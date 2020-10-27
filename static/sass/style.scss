@@ -2,10 +2,6 @@
 	background: url("../pictures/fond_ecran.jpg") no-repeat center center fixed;
 }
 
-.opa-1{
-	background-color: rgba(0, 0, 0, 0.1);
-}
-
 .logo-user{
 	margin: 10px 5px 0px 150px;
 }
@@ -32,4 +28,16 @@
 
 .h-answer{
 	height: 500px;
+}
+
+.opa-1{
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.loader{
+	display: none;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	z-index: 1;
 }

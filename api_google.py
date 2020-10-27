@@ -20,7 +20,7 @@ class Api_google:
             formatted_address = r["candidates"][0]["formatted_address"]
             location = r["candidates"][0]["geometry"]["location"]
             wiki_call = Api_google.cut_adress(formatted_address)
-            data = {"status": "OK", "formatted_address:": formatted_address, "location:": location, "wiki_call": wiki_call}
+            data = {"status": "OK", "formatted_address": formatted_address, "location": location, "wiki_call": wiki_call}
             return data
         elif r["status"] == "ZERO_RESULTS":
             return {"status": "ZERO_RESULTS"}
