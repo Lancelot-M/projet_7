@@ -4,6 +4,8 @@ import sys, json
 
 app = Flask(__name__)
 
+app.config.from_object('config')
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -12,7 +14,8 @@ def home():
 def launch():
 	if request.method == 'POST':
 		data = request.form['question']
-		dict_sys = System.questionning(data)
+		system = System(data)
+		dict_sys = system.questionning()
 		return dict_sys
 	else:
 		return "Oups il y a un bug dans la matrice."

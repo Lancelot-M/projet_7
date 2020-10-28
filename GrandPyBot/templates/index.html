@@ -3,6 +3,8 @@
 <head>
 	<title>GRANDPY BOT</title>
 	<link rel="stylesheet" href="../static/css/style.css">
+	<!-- maps loading -->
+	<script src="https://maps.googleapis.com/maps/api/js?key={{config.GOOGLE_KEY}}&callback=initMap" defer></script>
 </head>
 <body class="home-bg">
 
@@ -34,8 +36,11 @@
 		</div>
 	</div>
 
-	<div class="container rounded-lg bg-light my-5">
+	<div class="container rounded-lg my-5">
 		<div class="row h-answer">
+			<div class="col">
+				<div id="map"></div>
+			</div>
 		</div>		
 	</div>
 
@@ -50,7 +55,7 @@
 				 		<a href="https://github.com/Lancelot-M/projet_7">Github</a>
 					 </li>
 					<li>
-					 	<a href="https://www.linkedin.com/in/lancelot-mitonneau/">Linkedin</a>
+					 	<a href="https://linkedin.com/in/lancelot-mitonneau-a798a9194">Linkedin</a>
 						</li>
 					</ul>
 			</div>

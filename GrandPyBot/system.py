@@ -15,14 +15,12 @@ class System:
         "maps_call": [],
         "maps_answ": {}}
 
-    @staticmethod
-    def questionning(data):
+    def questionning(self):
         #Main function. Actived from view.py
-        request = System(data)
-        request.parse_question()
-        request.google_caller()
-        request.wiki_caller()
-        data = request.data
+        self.parse_question()
+        self.google_caller()
+        self.wiki_caller()
+        data = self.data
         return data
 
     def parse_question(self):

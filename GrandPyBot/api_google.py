@@ -1,5 +1,5 @@
 import sys, json, requests
-from GrandPyBot.config_perso import API_KEY
+from config import GOOGLE_KEY
 
 class Api_google:
     """Google map requesting."""
@@ -9,7 +9,7 @@ class Api_google:
         #Make a request to google place api.
         find_place = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json"
         params = {
-            "key": API_KEY,
+            "key": GOOGLE_KEY,
             "input": target,
             "inputtype": "textquery",
             "fields": "formatted_address,place_id,types,geometry"

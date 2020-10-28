@@ -3,7 +3,13 @@ $(document).ready(function(){
 	# code ici
 });
 */
-
+let map;
+function initMap() 
+	{
+		map = new google.maps.Map(document.getElementById("map"), 
+									{center: {lat: 50.000, lng: 150.644 },
+							  		zoom: 2,});
+	}
 $( "#search_adress" ).on("submit", function( event ) {
 	$(".loader").css("display", "block");
 	var data_question = $("input").val();
@@ -15,6 +21,17 @@ $( "#search_adress" ).on("submit", function( event ) {
         success: function(datas)
         {
         	chat_quest(datas);
+        	if (datas["maps_call"] == 1)
+        	{
+	        	map = new google.maps.Map(document.getElementById("map"), 
+										{center: datas["maps_answ"]["location"],
+								  		zoom: 15,});
+	        	const marker = new google.maps.Marker(
+	        	{
+			        position: datas["maps_answ"]["location"],
+			        map: map,
+        		});
+	        }
         },
         complete: function()
         {
