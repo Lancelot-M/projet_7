@@ -7,5 +7,4 @@ py==1.4.34
 requests==2.22.0
 pylint==1.7.2
 pytest==3.1.2
-selenium==3.4.34
 six==1.10.0
