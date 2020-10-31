@@ -1,10 +1,13 @@
-import requests, sys, json
+"""File contain the wikipedia requesting class."""
 
-class Api_wiki:
+import requests
+
+class ApiWiki:
     """Wiki class."""
 
     @staticmethod
     def find_pageid(wiki_call):
+        """Loading page id function."""
         url = "https://fr.wikipedia.org/w/api.php"
         params = {
             "action": "query",
@@ -13,12 +16,13 @@ class Api_wiki:
             "srsearch": wiki_call,
             "format": "json"
             }
-        r = requests.get(url=url, params=params)
-        r = r.json()
-        return(r["query"]["search"][0]["pageid"])
+        wiki_request = requests.get(url=url, params=params)
+        wiki_request = wiki_request.json()
+        return wiki_request["query"]["search"][0]["pageid"]
 
     @staticmethod
     def page_info(pageid):
+        """Loading page info with page id function."""
         url = "https://fr.wikipedia.org/w/api.php"
         params = {
             "action": "query",
@@ -29,8 +33,8 @@ class Api_wiki:
             "exsentences": "3",
             "format": "json"
             }
-        r = requests.get(url=url, params=params)
-        r = r.json()
-        page_dict = r["query"]["pages"][str(pageid)]
+        wiki_request = requests.get(url=url, params=params)
+        wiki_request = wiki_request.json()
+        page_dict = wiki_request["query"]["pages"][str(pageid)]
         data = {"fullurl": page_dict["fullurl"], "extract": page_dict["extract"]}
         return data
