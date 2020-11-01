@@ -6,7 +6,7 @@
 import random
 from GrandPyBot.api_google import ApiGoogle
 from GrandPyBot.api_wiki import ApiWiki
-from GrandPyBot.config_text import STOP_WORDS
+from GrandPyBot.stop_words import STOP_WORDS
 
 class System:
     """Core class."""

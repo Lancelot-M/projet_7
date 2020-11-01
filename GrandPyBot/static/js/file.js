@@ -1,13 +1,8 @@
-/*
-$(document).ready(function(){
-	# code ici
-});
-*/
 let map;
 function initMap() 
 	{
 		map = new google.maps.Map(document.getElementById("map"), 
-									{center: {lat: 50.000, lng: 150.644 },
+									{center: {lat: 0.000, lng: 0.000 },
 							  		zoom: 2,});
 	}
 $( "#search_adress" ).on("submit", function( event ) {

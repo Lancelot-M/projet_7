@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .home-bg {
-  background: url("../pictures/fond_ecran.jpg") no-repeat center center fixed;
+  background: url("../pictures/fond_ecran1.jpg") no-repeat center center fixed;
 }
 
 .logo-user {
@@ -32,7 +32,7 @@
 }
 
 .opa-1 {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .loader {
@@ -200,7 +200,7 @@ sup {
 }
 
 a {
-  color: black;
+  color: purple;
   text-decoration: none;
   background-color: transparent;
 }
@@ -2905,7 +2905,7 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: black;
+  color: purple;
   text-decoration: none;
 }
 .btn-link:hover {
@@ -4587,7 +4587,7 @@ input[type=button].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: black;
+  color: purple;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
