@@ -1,7 +1,6 @@
-"""File contain core the core class of application."""
-
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-q
+# coding: utf-8
+"""File contain core the core class of application."""
 
 import random
 from GrandPyBot.api_google import ApiGoogle
@@ -27,7 +26,7 @@ class System:
         return data
 
     def parse_question(self):
-        """Change string to list."""
+        """take essential of information"""
         maps_call = self.data["question"].replace("\'", " ").replace("?", "").replace(".", "")\
                         .replace("!", "")
         maps_call = maps_call.split(" ", -1)
@@ -35,8 +34,6 @@ class System:
             if word == '':
                 maps_call.remove(word)
         maps_call = System.cut_from_last(maps_call, STOP_WORDS)
-        for word in STOP_WORDS:
-            maps_call = System.clean_list(word, maps_call)
         maps_call = " ".join(maps_call)
         self.data["maps_call"] = maps_call
 
@@ -56,19 +53,10 @@ class System:
                     if el1 == el2:
                         index += 1
                         if index + 1 == stop_words:
-                            del list1[0: count]
+                            del list1[0: count + 1]
                             return list1
-            count += 1
+                count += 1
         return list1
-
-    @staticmethod
-    def clean_list(stop_word, list_old):
-        """Remove stop word from list."""
-        list_new = []
-        for word in list_old:
-            if word != stop_word:
-                list_new.append(word)
-        return list_new
 
     def google_caller(self):
         """Call ApiGoogle class."""

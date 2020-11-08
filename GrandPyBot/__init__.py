@@ -1,2 +1,4 @@
+"""Init file"""
+
 from flask import Flask
-from .views import app
+from GrandPyBot.views import app
