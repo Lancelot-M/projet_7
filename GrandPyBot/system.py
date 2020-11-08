@@ -34,6 +34,9 @@ class System:
             if word == '':
                 maps_call.remove(word)
         maps_call = System.cut_from_last(maps_call, STOP_WORDS)
+        for word in maps_call:
+            if word in STOP_WORDS:
+                maps_call.remove(word)
         maps_call = " ".join(maps_call)
         self.data["maps_call"] = maps_call
 
