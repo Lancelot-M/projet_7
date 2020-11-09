@@ -1,1 +1,3 @@
-config_exemple.py
+__pycache__
+grandpybot.__pycache__
+config.py
