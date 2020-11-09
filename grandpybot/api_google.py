@@ -14,7 +14,8 @@ class ApiGoogle:
             "key": GOOGLE_KEY,
             "input": target,
             "inputtype": "textquery",
-            "fields": "formatted_address,place_id,types,geometry"
+            "fields": "formatted_address,place_id,types,geometry",
+            "locationbias": "circle:1000000@48.856614,2.3522219"
         }
         place_reqested = requests.get(url=find_place, params=params)
         place_reqested = place_reqested.json()

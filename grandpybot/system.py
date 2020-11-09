@@ -3,9 +3,9 @@
 """File contain core the core class of application."""
 
 import random
-from GrandPyBot.api_google import ApiGoogle
-from GrandPyBot.api_wiki import ApiWiki
-from GrandPyBot.stop_words import STOP_WORDS
+from grandpybot.api_google import ApiGoogle
+from grandpybot.api_wiki import ApiWiki
+from grandpybot.stop_words import STOP_WORDS
 
 class System:
     """Core class."""

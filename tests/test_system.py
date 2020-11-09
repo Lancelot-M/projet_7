@@ -1,8 +1,8 @@
 """testing file for system.py"""
 
 import pytest
-from GrandPyBot.system import System
-from GrandPyBot.stop_words import STOP_WORDS
+from grandpybot.system import System
+from grandpybot.stop_words import STOP_WORDS
 
 @pytest.fixture
 def object_test():
@@ -24,9 +24,9 @@ def test_questionning_return_dict(monkeypatch, object_test):
     def mock_wiki_pass(self):
         """mock wiki_caller()"""
         pass
-    monkeypatch.setattr('GrandPyBot.system.System.parse_question', mock_parse_pass)
-    monkeypatch.setattr('GrandPyBot.system.System.google_caller', mock_google_pass)
-    monkeypatch.setattr('GrandPyBot.system.System.wiki_caller', mock_wiki_pass)
+    monkeypatch.setattr('grandpybot.system.System.parse_question', mock_parse_pass)
+    monkeypatch.setattr('grandpybot.system.System.google_caller', mock_google_pass)
+    monkeypatch.setattr('grandpybot.system.System.wiki_caller', mock_wiki_pass)
     
     assert object_test.questionning() == {"question": "Bonjour GrandPyBot ! Je recherche l'adresse d'Openclassrooms.",
                                             "wiki_call": "",
@@ -40,10 +40,10 @@ def test_parsing(monkeypatch, object_test):
     def mock_cut_from_last(list1, list2):
         """mock cut_from_last()"""
         return ["adresse", "d", "Openclassrooms"]
-    monkeypatch.setattr('GrandPyBot.system.System.cut_from_last', mock_cut_from_last)
+    #monkeypatch.setattr('grandpybot.system.System.cut_from_last', mock_cut_from_last)
     object_test.parse_question()
     
-    assert object_test.data["maps_call"] == "adresse d Openclassrooms"
+    assert object_test.data["maps_call"] == "adresse Openclassrooms"
 
 def test_cutfromlast():
     """cut list on the before last stop word"""
@@ -65,7 +65,7 @@ def test_google_caller(monkeypatch, object_test):
 75019 Paris, France",
                     "location": {"lat": 0.000, "lng": 0.000 }, "wiki_call": 'wiki_call'}
         return results
-    monkeypatch.setattr('GrandPyBot.api_google.ApiGoogle.search', mock_search_is_ok)
+    monkeypatch.setattr('grandpybot.api_google.ApiGoogle.search', mock_search_is_ok)
     
     object_test.google_caller()
     expected = {"formatted_address": 'Je connais bien cet endroit mon petit chat. \
@@ -77,7 +77,7 @@ Il se situe au 10 Quai de la Charente, 75019 Paris, France',
         """mock ApiGoogle.search()"""
         results = {"status": "ZERO_RESULTS"}
         return results
-    monkeypatch.setattr('GrandPyBot.api_google.ApiGoogle.search', mock_search_no_result)
+    monkeypatch.setattr('grandpybot.api_google.ApiGoogle.search', mock_search_no_result)
     object_test.google_caller()
     assert object_test.data["maps_answ"] == "Oula! Je ne connais pas l'adresse de cet\
                                         établissement. Quelle déception !!!"
@@ -86,7 +86,7 @@ Il se situe au 10 Quai de la Charente, 75019 Paris, France',
         """mock ApiGoogle.search()"""
         results = {"status": "INVALID_REQUEST"}
         return results
-    monkeypatch.setattr('GrandPyBot.api_google.ApiGoogle.search', mock_search_is_error)
+    monkeypatch.setattr('grandpybot.api_google.ApiGoogle.search', mock_search_is_error)
     
     object_test.google_caller()
     assert object_test.data["maps_answ"] == "Que me demandes tu mon petit? Tu sais avec\
@@ -101,8 +101,8 @@ def test_wiki_caller(monkeypatch, object_test):
     def mock_page_info(findpage_data):
         """mock ApiWiki.page_info"""
         return {"fullurl": 'text_url', "extract": 'text_wiki_page'}
-    monkeypatch.setattr('GrandPyBot.api_wiki.ApiWiki.find_pageid', mock_findpage)
-    monkeypatch.setattr('GrandPyBot.api_wiki.ApiWiki.page_info', mock_page_info)
+    monkeypatch.setattr('grandpybot.api_wiki.ApiWiki.find_pageid', mock_findpage)
+    monkeypatch.setattr('grandpybot.api_wiki.ApiWiki.page_info', mock_page_info)
     
     object_test.wiki_caller()
     assert object_test.data["wiki_answ"] == {}

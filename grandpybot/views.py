@@ -1,7 +1,7 @@
 """File containing routes of the app."""
 
 from flask import Flask, render_template, request
-from GrandPyBot.system import System
+from grandpybot.system import System
 
 app = Flask(__name__)
 

@@ -1,5 +1,5 @@
 import requests
-from GrandPyBot.api_wiki import ApiWiki
+from grandpybot.api_wiki import ApiWiki
 
 def test_find_pageid(monkeypatch):
     """return the pageid from wiki_call"""

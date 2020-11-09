@@ -1,7 +1,7 @@
 """testing file api_google"""
 
 import pytest
-from GrandPyBot.api_google import ApiGoogle
+from grandpybot.api_google import ApiGoogle
 from config import GOOGLE_KEY
 
 def test_search_is_ok(monkeypatch):
@@ -28,7 +28,7 @@ def test_search_is_ok(monkeypatch):
         """mock APiGoogle.cut_adress()"""
         return "Quai de la Charente (Paris)"
     monkeypatch.setattr('requests.get', mock_get_requests)
-    monkeypatch.setattr('GrandPyBot.api_google.ApiGoogle.cut_adress', mock_cut_adress)
+    monkeypatch.setattr('grandpybot.api_google.ApiGoogle.cut_adress', mock_cut_adress)
     assert ApiGoogle.search("maps_call") == {"status": "OK", 
         "formatted_address": "10 Quai de la Charente, 75019 Paris, France",
         "location": {'lat': 48.8975156, 'lng': 2.3833993}, 
