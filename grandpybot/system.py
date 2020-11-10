@@ -11,11 +11,13 @@ class System:
     """Core class."""
 
     def __init__(self, question):
-        self.data = {"question": question,
-        "wiki_call": "",
-        "wiki_answ": {},
-        "maps_call": [],
-        "maps_answ": {}}
+        self.data = {
+            "question": question,
+            "wiki_call": "",
+            "wiki_answ": {},
+            "maps_call": [],
+            "maps_answ": {}
+        }
 
     def questionning(self):
         """Main function. Actived from view.py"""
@@ -75,12 +77,12 @@ class System:
             self.data["maps_answ"] = data
             self.data["maps_call"] = 1
         elif data["status"] == "ZERO_RESULTS":
-            self.data["maps_answ"] = "Oula! Je ne connais pas l'adresse de cet\
-                                        établissement. Quelle déception !!!"
+            self.data["maps_answ"] = "Oula! Je ne connais pas l'adresse de cet "\
+                "établissement. Quelle déception !!!"
             self.data["maps_call"] = 2
         else:
-            self.data["maps_answ"] = "Que me demandes tu mon petit? Tu sais avec\
-                                        papy il faut bien expliquer!"
+            self.data["maps_answ"] = "Que me demandes tu mon petit? Tu sais avec "\
+                "papy il faut bien expliquer!"
             self.data["maps_call"] = 3
 
     def wiki_caller(self):
